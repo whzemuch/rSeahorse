@@ -3,14 +3,15 @@
 #' @param csvfile input by user
 #'
 #' @return
-#'
+#' @export
 #' @importFrom tidyr  %>%
+#' @export
 #' @examples
-#' file = "./data/layout.csv"
+#' file = system.file("extdata", "layout.csv", package="rSeahorse")
 #' convert_layout_to_long(csvfile = file)
 convert_layout_to_long <- function(csvfile) {
 
-  layout <- read.csv(file = file, header = TRUE, check.names = FALSE)
+  layout <- read.csv(file = csvfile, header = TRUE, check.names = FALSE)
   colnames(layout)[1] <- "Row"
 
 
@@ -19,7 +20,8 @@ convert_layout_to_long <- function(csvfile) {
                         names_to = "Col",
                         values_to = "Group"
     ) %>%
-    dplyr::mutate(Well = calculate_well_id(Row, Col))
+    dplyr::mutate(Well = calculate_well_id(Row, Col)) %>%
+    dplyr::mutate(Well = factor(Well))
   return(layout_long)
 }
 

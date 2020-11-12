@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_OCR_subtype.R
 \name{calculate_OCR_subtype}
 \alias{calculate_OCR_subtype}
-\title{Title}
+\title{Calculate OCR subtype}
 \usage{
 calculate_OCR_subtype(
   data_min = data_min,
@@ -21,7 +21,7 @@ calculate_OCR_subtype(
 mito_Base_Respiration, mito_Proton_Leak, mito_ATP_Production, mito_Max_Respiration, mito_Non_Mito_Oxygen_Consumption, mito_Spare_Respiratory_Capacity
 }
 \description{
-Title
+Calculate OCR subtype
 }
 \examples{
 calculate_OCR_subtype <- function(data_min=data_min, bin_list=bin_list, return_type="df")

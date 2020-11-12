@@ -1,4 +1,4 @@
-#' Title
+#' Calculate OCR subtype
 #'
 #'
 #' @param data_min a data frame
@@ -94,7 +94,7 @@ calculate_OCR_subtype <- function(data_min=data_min, bin_list=bin_list, return_t
 #' @param event_label a data frame including columns: Time, Event, Prarmeter, minutes, treatment, y
 #'
 #' @return a list
-#'
+#' @export
 #'
 #' @examples
 #'

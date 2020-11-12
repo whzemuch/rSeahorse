@@ -16,6 +16,6 @@ convert_layout_to_long(csvfile)
 Convert the layout of a plate from wide format to long format
 }
 \examples{
-file = "./data/layout.csv"
+file = system.file("extdata", "layout.csv", package="rSeahorse")
 convert_layout_to_long(csvfile = file)
 }

@@ -1,0 +1,98 @@
+---
+title: "rSeahorse-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rSeahorse-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rSeahorse)
+```
+
+## Description:
+ 
+  - data: read from workbook "Rate Data"
+  - event: read from workbook "Time Event"
+  - data_min: transform the datetime to the minutes
+  - data_mito: Calculation for different types of respiration
+  - event_label: for A, B, C, D near the vertical line: annotation
+  - well_label: for well name used in the quick viewing: geom_text
+  
+  - data_seahorse: 
+      "data", "data_min", "event_label", "well_label",  "sheet_names"
+  
+  - well_exclude: list of outliers after quick viewing
+  - bin_list: convert numerical minute column to categorical section column 
+  
+## Work flow
+
+###  1. Import data
+```{r}
+file <-  system.file("extdata", "XFAssay.xls", package="rSeahorse" ) 
+layout <- system.file("extdata", "layout.csv", package="rSeahorse" ) 
+
+group_info <- rSeahorse::convert_layout_to_long(layout)
+
+rsh <- import_seahorse(file = file, group_info = group_info)
+
+lapply(rsh, head)
+
+
+```
+
+  
+### 2. Quick View and exclude wells
+```{r}
+
+qview_seahorse(rsh$data_min, rsh$well_label)
+wells_exclude <- c("6", "11", "15", "18", "20", "23")
+
+```
+
+### 3. Plot the main figure
+```{r}
+
+plot_seahorse(data_min = rsh$data_min,
+              wells_exclude = wells_exclude,
+              event_label = rsh$event_label,
+              group_info = group_info,
+              size_group = 6)
+
+```
+### 4. Calculate OCR subtype
+```{r}
+bin_list <- make_time_bin(rsh$event_label)
+
+
+calculate_OCR_subtype(data_min = rsh$data_min,
+                      bin_list = bin_list, 
+                      return_type = "plot")
+
+calculate_OCR_subtype(data_min = rsh$data_min,
+                      bin_list = bin_list, 
+                      return_type = "df")
+
+
+
+
+```
+
+
+
+
+```{r}
+
+
+
+
+```
+
