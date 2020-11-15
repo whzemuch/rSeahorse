@@ -17,5 +17,5 @@
 
 ```r
 library(devtools)
-devtools::install_github("whzemuch/rSeahorse/"
+devtools::install_github("whzemuch/rSeahorse/")
 ```
