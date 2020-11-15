@@ -14,8 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, warning=FALSE, message=FALSE}
 library(rSeahorse)
+library(tidyverse)
 ```
 
 ## Description:
@@ -36,22 +37,33 @@ library(rSeahorse)
 ## Work flow
 
 ###  1. Import data
-```{r}
+```{r, fig.width=12, results='asis'}
 file <-  system.file("extdata", "XFAssay.xls", package="rSeahorse" ) 
 layout <- system.file("extdata", "layout.csv", package="rSeahorse" ) 
 
 group_info <- rSeahorse::convert_layout_to_long(layout)
+knitr::kable(group_info)
+
+
+group_info$Group <- dplyr::recode_factor(group_info$Group,
+                     Fresh = "Fresh",
+                     TCP = "TCP",
+                     BM_ECM = "BM-ECM",
+                     ECMplus = "ECMplus")
 
 rsh <- import_seahorse(file = file, group_info = group_info)
 
-lapply(rsh, head)
 
+
+for (i in seq_along(rsh)) {
+  print(knitr::kable(head(rsh[[i]]), caption = names(rsh)[i]))
+}
 
 ```
 
   
 ### 2. Quick View and exclude wells
-```{r}
+```{r, fig.width=8, fig.height=6}
 
 qview_seahorse(rsh$data_min, rsh$well_label)
 wells_exclude <- c("6", "11", "15", "18", "20", "23")
@@ -59,7 +71,7 @@ wells_exclude <- c("6", "11", "15", "18", "20", "23")
 ```
 
 ### 3. Plot the main figure
-```{r}
+```{r,fig.width=8, fig.height=6}
 
 plot_seahorse(data_min = rsh$data_min,
               wells_exclude = wells_exclude,
@@ -68,14 +80,19 @@ plot_seahorse(data_min = rsh$data_min,
               size_group = 6)
 
 ```
+
 ### 4. Calculate OCR subtype
-```{r}
+```{r, fig.width=8, fig.height=6}
 bin_list <- make_time_bin(rsh$event_label)
 
 
-calculate_OCR_subtype(data_min = rsh$data_min,
+p <- calculate_OCR_subtype(data_min = rsh$data_min,
                       bin_list = bin_list, 
                       return_type = "plot")
+p
+
+p + ggtitle("OCR subtype") +
+  ggplot2::theme(axis.text.x = element_text(angle = 45, vjust = .5, hjust = .5))
 
 calculate_OCR_subtype(data_min = rsh$data_min,
                       bin_list = bin_list, 
@@ -87,12 +104,4 @@ calculate_OCR_subtype(data_min = rsh$data_min,
 ```
 
 
-
-
-```{r}
-
-
-
-
-```
 
