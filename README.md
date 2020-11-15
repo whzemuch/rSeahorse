@@ -1,5 +1,5 @@
 # rSeahorse
-<p align="right"> <img src="images/rSeahorse_hexsticker.png" width=250> </p>
+<p align="right"> <img src="images/rSeahorse_hexsticker.png" width=180> </p>
 
 
 ## Description
