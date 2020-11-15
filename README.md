@@ -4,12 +4,12 @@
 
 ## Description
 
-1. Basal Respiration
-2. Maximal Respiration
-3. Proton Leak
-4. ATP Production
-5. Non-Miochondrial Respiration
-6. Spare Respiratory Capacity
+1. __Basal Respiration__
+2. __Maximal Respiration__
+3. __Proton Leak__
+4. __ATP Production__
+5. __Non-Miochondrial Respiration__
+6. __Spare Respiratory Capacity__
 
 
 ##  Install rSeahorse
