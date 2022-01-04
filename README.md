@@ -4,8 +4,7 @@
 rSeahorse is an R package implementing a complete workflow for analyzing data produced by Seahourse's mitochondria stress test, a widely recognized, well-accepted standard assay for assessing mitochondrial function. Currently it only support seahorse XFe24 Analyzer. 
  <p><img style="float:right;margin-right:10px" src="images/rSeahorse_hexsticker.png" width=150/></p>
 
-rSeahorse can generate a figure showing OCR consumption rate like figure 5f in the paper as below:
-     Haythorne, E. et al. Diabetes causes marked inhibition of mitochondrial metabolism in pancreatic β-cells. Nature Communications 10, 2474 (2019).
+rSeahorse can generate a figure showing OCR consumption rate like figure 5f in a paper by _Haythorne, E. et al. Diabetes causes marked inhibition of mitochondrial metabolism in pancreatic β-cells. Nature Communications 10, 2474 (2019)_
 
 rSerhorce also can calculate and visualize those items listed as below:
 
