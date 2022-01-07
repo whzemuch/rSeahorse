@@ -32,7 +32,7 @@ convert_layout_to_long <- function(csvfile) {
 #' @param Row character A, B, C, D
 #' @param Col character 1,2,3,4,5,6
 #'
-#' @return
+#' @return an integer for well_id
 #'
 #'
 #' @examples
