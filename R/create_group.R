@@ -1,4 +1,4 @@
-#' Title
+#' Create a group information dataframe
 #'
 #' @return a data frame with columns: Well, Group, Col, Row, Treatment
 #' @export
